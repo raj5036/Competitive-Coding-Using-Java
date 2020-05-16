@@ -7,25 +7,38 @@ public class Main{
 			sum += temp[i];
 		return sum;
 	}
-	public static void swap(int a,int b){
-		int temp=a;
-		a=b;
-		temp=b;
+	public static void swap(int[] a,int[] b,int i){
+		int temp=a[i];
+		a[i]=b[i];
+		b[i]=temp;
 	}
 	public static int maximumSumOfA(int n,int k,int[] a,int[] b){
 		Arrays.sort(a);
 		Arrays.sort(b);
-
-		int m=n-1;
-		for(int i=0,j=m;i<n;i++,j--){
-			if(k==0)
-				return getSum(a);
-			if(a[i]<b[j]){
-				swap(a[i],b[m]);
-				k=-1;
+		// System.out.println(Arrays.toString(a));
+		// System.out.println(Arrays.toString(b));
+		// for(int i=0;i<n;i++){
+		// 	if(k>0 && a[i]<b[n-i-1]){
+		// 		swap(a,b,i);
+		// 		k-=1;
+		// 	}
+		// }
+		// System.out.println(Arrays.toString(a));
+		// System.out.println(Arrays.toString(b));
+		// return getSum(a);
+		int idx=0;
+		int ans=0;
+		for(int i=0;i<n;i++){
+			if(k>0 && a[i]<b[n-i-1]){
+				ans+=b[n-i-1];
+			}else{
+				idx=i;
+				break;
 			}
 		}
-		return getSum(a);
+		for(int i=idx;i<n;i++)
+			ans+=a[i];
+		return ans;
 	}
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
