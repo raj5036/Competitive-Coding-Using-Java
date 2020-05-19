@@ -1,15 +1,18 @@
 import java.util.*;
 
 public class Main{
-	public static int noOfGroups(int[] e,int n){//1 2 2 2 3 // 2 4 1 3  
+	public static int noOfGroups(int[] e,int n){//1 2 2 2 3 4 4 // 2 4 1 3  
 		int groups=0;
-		for(int i=0;i<e.length;i++){
-			if(e[i]==n)
-				return 1;
-		}
-		for(int i=0;i<e.length;i++){
-			if(e[i]==1)
+		Arrays.sort(e);
+		for(int i=0;i<n; ){
+			int x=1;
+			while(x<e[i] && i<n-1){
+				i++;
+				x++;
+			}
+			if(x>=e[i])
 				groups++;
+			i++;
 		}
 		return groups;
 	}
