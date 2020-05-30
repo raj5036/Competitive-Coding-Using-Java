@@ -27,7 +27,7 @@ class Graph{
 				int u=graph.edge[j].src;
 				int v=graph.edge[j].dest;
 				int weight=graph.edge[j].weight;
-				if(dist[u]!=INF && dist[u]+weight<dist[v])
+				if(dist[u]!=INF && dist[u]+weight<dist[v]) //Relaxation
 					dist[v]=dist[u]+weight;
 			}
 		}

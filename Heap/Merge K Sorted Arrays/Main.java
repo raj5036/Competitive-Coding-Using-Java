@@ -8,9 +8,9 @@ public class Main{
 				pq.add(a[i][j]);
 			}
 		}
-		Iterator<Integer> it=pq.iterator();
-		while(it.hasNext())
-			System.out.print(it.next()+" ");
+		
+		while(!pq.isEmpty())
+			System.out.print(pq.poll()+" ");
 	}
 	public static void main(String[] args) {
 		int[][] a={

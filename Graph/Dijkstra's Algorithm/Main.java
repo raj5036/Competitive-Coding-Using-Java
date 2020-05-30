@@ -28,7 +28,7 @@ class Dijkstra{
 		dist[src]=0;
 		
 		for(int i=0;i<V-1;i++){
-			int u=minDistance(dist,visited);
+			int u=minDistance(dist,visited); //In the first iteration it Always picks the source vertex 
 			visited[u]=true;
 
 			for(int v=0;v<V;v++){
