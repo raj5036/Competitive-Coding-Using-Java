@@ -31,16 +31,17 @@ public class DetectCycleDFS{
 			return false;
 		}
 		Boolean detectCycleUsingBFSUtil(Graph graph,int node,Boolean[] visited,Boolean[] recStack){
+			if(recStack[node])
+				return true;
 			visited[node]=true;
 			recStack[node]=true;
 			Iterator<Integer> i=graph.adjList[node].listIterator();
 			while(i.hasNext()){
 				int next=i.next();
-				if(!visited[next]){
-					detectCycleUsingBFSUtil(graph,next,visited,recStack);
-				}else if(recStack[next]){
+				if(detectCycleUsingBFSUtil(graph,next,visited,recStack)){
 					return true;
 				}
+				recStack[node]=false;
 			}
 			return false;
 		}
