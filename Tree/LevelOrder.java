@@ -77,6 +77,40 @@ class BinaryTree{
 		}
 		return root;
 	}
+	boolean isBST(Node root,int min,int max){
+		if(root==null) return true; // An empty tree is BST
+		if(root.data<min || root.data>max) return false;
+		return ( isBST(root.left,min,root.data-1) && isBST(root.right,root.data+1,max) );
+	}
+	Node mirror(Node node){
+		if(node==null) return null;
+		node.left=mirror(node.left);
+		node.right=mirror(node.right);
+
+		node.left=node.right;/* swap the left and right pointers*/
+		node.right=node.left;
+
+		return node;
+	}
+	int diameter(Node root){
+		if(root==null) return 0;
+		/* Get the height of left and right sub-tree*/
+		int lHeight=heightOfTheTree(root.left);
+		int rHeight=heightOfTheTree(root.right);
+		/* Get the diameter of left and right sub-tree*/
+		int lDiameter=diameter(root.left);
+		int rDiamater=diameter(root.right);
+		/* Return max of following three 
+          1) Diameter of left subtree 
+         2) Diameter of right subtree 
+         3) Height of left subtree + height of right subtree + 1 */
+		return Math.max( lHeight+rHeight+1,Math.max( lDiameter,rDiamater ) );
+	}
+	int sumOfAllLeafNodes(Node root,int sum){
+		if(root==null) return 0;
+		if(root.left==null && root.right==null) sum+=root.data;
+		return sumOfAllLeafNodes(root.left,sum)+sumOfAllLeafNodes(root.right,sum);
+	}
 	public static void main(String[] args) {
 		BinaryTree bst=new BinaryTree(12);
 		bst.insertNode(root,34);
@@ -91,5 +125,9 @@ class BinaryTree{
 		System.out.println("The minValueNode is : " + bst.minValueNode(root));
 		bst.delete(root,9);
 		bst.inOrder(root);
+		System.out.println("is This tree BST : "+ bst.isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE));
+		System.out.println("Diameter of the tree is : "+ bst.diameter(root));
+		int sum=0;
+		System.out.println("Sum of all leaf nodes "+ bst.sumOfAllLeafNodes(root,sum));
 	}
 }
