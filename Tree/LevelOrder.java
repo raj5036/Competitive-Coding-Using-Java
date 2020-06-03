@@ -84,8 +84,8 @@ class BinaryTree{
 	}
 	Node mirror(Node node){
 		if(node==null) return null;
-		node.left=mirror(node.left);
-		node.right=mirror(node.right);
+		Node left=mirror(node.left);
+		Node right=mirror(node.right);
 
 		node.left=node.right;/* swap the left and right pointers*/
 		node.right=node.left;
@@ -129,5 +129,6 @@ class BinaryTree{
 		System.out.println("Diameter of the tree is : "+ bst.diameter(root));
 		int sum=0;
 		System.out.println("Sum of all leaf nodes "+ bst.sumOfAllLeafNodes(root,sum));
+		System.out.println("The mirror tree is "+ bst.mirror(root));
 	}
 }
