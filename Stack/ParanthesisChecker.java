@@ -20,8 +20,10 @@ import java.util.*;
                 stack.push(x[i]);
             if(x[i]==')' || x[i]=='}' || x[i]==']'){
                 Character c1=stack.pop();
-                if(!isPerfectPair(c1 , x[i]))
+                if(!isPerfectPair(c1 , x[i])){
                     System.out.println("Not Balanced");
+                    break;
+                }
             }
         }
         if(stack.empty())
