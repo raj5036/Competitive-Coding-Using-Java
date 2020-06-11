@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class ShovelAndSwods{
+	public static int maxEarning(int a,int b){
+		if(a==0 || b==0)
+			return 0;
+		if(b>2*a)
+			return a;
+		if(a>2*b)
+			return b;
+		int earning=0;
+	
+		if(a>=b)
+			while(a>1||b>1){
+				a=a-2;
+				b=b-1;
+				earning++;
+				if(a>1||b>1){
+					a=a-1;
+					b=b-2;
+					earning++;
+				}
+			}
+		else
+			while(a>1||b>1){
+				a=a-1;
+				b=b-2;
+				earning++;
+				if(a>1||b>1){
+					a=a-2;
+					b=b-1;
+					earning++;
+				}
+			}
+		return earning;
+	}
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int testCase=sc.nextInt();
+		for(int i=0;i<testCase;i++){
+			int a=sc.nextInt();
+			int b=sc.nextInt();
+			System.out.println(maxEarning(a, b));
+		}
+	}
+}
