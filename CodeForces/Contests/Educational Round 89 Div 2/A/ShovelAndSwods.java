@@ -8,30 +8,7 @@ public class ShovelAndSwods{
 			return a;
 		if(a>2*b)
 			return b;
-		int earning=0;
-	
-		if(a>=b)
-			while(a>1||b>1){
-				a=a-2;
-				b=b-1;
-				earning++;
-				if(a>1||b>1){
-					a=a-1;
-					b=b-2;
-					earning++;
-				}
-			}
-		else
-			while(a>1||b>1){
-				a=a-1;
-				b=b-2;
-				earning++;
-				if(a>1||b>1){
-					a=a-2;
-					b=b-1;
-					earning++;
-				}
-			}
+        int	earning=(a+b)/3;
 		return earning;
 	}
 	public static void main(String[] args) {
