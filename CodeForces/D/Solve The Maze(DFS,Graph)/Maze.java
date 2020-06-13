@@ -2,6 +2,11 @@ import java.util.*;
 import java.util.stream.*;
 
 public class Maze{
+	public static boolean isSafe(char[][] maze,int i,int j){
+		int n=maze.length;
+		int m=maze[0].length;
+		return (i>=0 && j>=0 && maze[i][j]=='.' && i<m && j<n);
+	}
 	public static boolean checkForG(char[][] maze){
 		for(int i=0;i<maze.length;i++)
 			for(int j=0;j<maze[i].length;j++)
@@ -9,22 +14,17 @@ public class Maze{
 					return true;
 		return false;
 	}
-	public static boolean isSafe(char[][] maze,int i,int j){
-		int n=maze.length;
-		int m=maze[0].length;
-		return (i>=0 && j>=0 && maze[i][j]=='.' && i<m && j<n);
-	}
 	public static boolean solveMazeUtil(char[][] maze,int i,int j){
-		if(i==n && j==m) return true;
+		if(i==n-1 && j==m-1) return true;
 
 		if(isSafe(maze,i,j)){
-			if(isSafe(maze,i-1,j)) //up
+			if(isSafe(maze,i-1,j))   //up
 				return solveMazeUtil(maze,i-1,j);
 			if(isSafe(maze,i+1,j))  //down
 				return solveMazeUtil(maze,i+1,j);
-			if(isSafe(maze,i,j-1)) //left
+			if(isSafe(maze,i,j-1))  //left
 				return solveMazeUtil(maze,i,j-1);
-			if(isSafe(maze,i,j+1)) //right
+			if(isSafe(maze,i,j+1))  //right
 				return solveMazeUtil(maze,i,j+1);
 			return false;
 		}
@@ -45,15 +45,9 @@ public class Maze{
 		return solveMazeUtil(maze,startingRow,startingColumn);
 	}
 	public static boolean isPossible(char[][] maze){
-		for(int i=0;i<maze.length;i++){
-			for(int j=0;j<maze[i].length;j++){
-				if(maze[i][j]=='.'){
-					maze[i][j]='#';
-					if(solveMaze(maze))
-						return true;
-				}
-			}
-		}
+		if(!checkForG(maze))
+			 return true;
+		
 		return false;
 	}
 	public static void main(String[] args) {
