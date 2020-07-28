@@ -46,12 +46,12 @@ class PrintLCSNew{
 	}
 	public static void main(String[] args) {
 		PrintLCSNew obj=new PrintLCSNew();
-		String a="abcdpqt";
-		String b="pmnacq";
+		String a="abcdefghijklmnopqrstuvwxyz";
+		String b="abcdefghijklmnopqrstuvwxyyzz";
 		int[][] lookUpTable=new int[a.length()+1][b.length()+1];
 		//Arrays.fill(lookUpTable,0);
 		obj.fillLookUpTable(a,b,a.length(),b.length(),lookUpTable);
-		System.out.println(obj.printLCS(a,b,a.length(),b.length(),lookUpTable));
+		//System.out.println(obj.printLCS(a,b,a.length(),b.length(),lookUpTable));
 
 		System.out.println(obj.printAllLCS(a,b,a.length(),b.length(),lookUpTable));
 	}

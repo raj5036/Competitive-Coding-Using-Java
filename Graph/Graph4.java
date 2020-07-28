@@ -45,6 +45,7 @@ class GraphImp{
 	}
 	static void DFS(Graph graph,int src){
 		boolean[] visited = new boolean[graph.V];
+		Arrsys.fill(visited,false);
 		DFSUtil(graph,src,visited);
 	}
 	static void DFSUtil(Graph graph,int src,boolean[] visited){

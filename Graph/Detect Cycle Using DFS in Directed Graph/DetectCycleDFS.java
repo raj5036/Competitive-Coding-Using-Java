@@ -18,32 +18,32 @@ public class DetectCycleDFS{
 			graph.adjList[src].add(dest);
 			graph.adjList[dest].add(src);
 		}
-		Boolean detectCycleUsingBFS(Graph graph){
-			Boolean[] visited=new Boolean[graph.V];
-			Boolean[] recStack=new Boolean[graph.V];
+		public boolean detectCycle(Graph graph){
+			boolean[] visited=new boolean[graph.V];
+			boolean[] recStack=new boolean[graph.V];
 			Arrays.fill(visited,false);
 			Arrays.fill(recStack,false);
-
 			for(int i=0;i<graph.V;i++){
-				if(detectCycleUsingBFSUtil(graph,i,visited,recStack))
+				if(detectCycleUtil(graph,i,visited,recStack))
 					return true;
 			}
 			return false;
 		}
-		Boolean detectCycleUsingBFSUtil(Graph graph,int node,Boolean[] visited,Boolean[] recStack){
-			if(recStack[node])
-				return true;
-			visited[node]=true;
-			recStack[node]=true;
-			Iterator<Integer> i=graph.adjList[node].listIterator();
-			while(i.hasNext()){
-				int next=i.next();
-				if(detectCycleUsingBFSUtil(graph,next,visited,recStack)){
-					return true;
-				}
-				recStack[node]=false;
-			}
-			return false;
+		public boolean detectCycleUtil(Graph graph,int node,boolean[] visited,boolean[] recStack){
+			if(recStack[node]) 
+                return true; 
+              
+            visited[node] = true; 
+            recStack[node] = true; 
+            Iterator<Integer> it=graph.adjList[node].listIterator();
+          
+            while(it.hasNext()) 
+                if (detectCycleUtil(graph ,it.next(), visited, recStack)) 
+                    return true; 
+
+             recStack[node] = false;
+
+            return false; 
 		}
 	}
 	public static void main(String[] args) {
@@ -54,7 +54,7 @@ public class DetectCycleDFS{
         graph.addEdge(graph,2, 0); 
         graph.addEdge(graph,2, 3); 
         graph.addEdge(graph,3, 3); 
-        if(graph.detectCycleUsingBFS(graph))
+        if(graph.detectCycle(graph))
         	System.out.println("Cycle Exists");
         else
         	System.out.println("No Cycle");

@@ -18,7 +18,7 @@ import java.util.*;
         for(int i=0;i<x.length;i++){
             if(x[i]=='(' || x[i]=='{' || x[i]=='[')
                 stack.push(x[i]);
-            if(x[i]==')' || x[i]=='}' || x[i]==']'){
+            else if(x[i]==')' || x[i]=='}' || x[i]==']'){
                 Character c1=stack.pop();
                 if(!isPerfectPair(c1 , x[i])){
                     System.out.println("Not Balanced");

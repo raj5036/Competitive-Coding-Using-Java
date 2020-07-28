@@ -6,7 +6,7 @@ public class Solution{
 				System.out.print(x+" ");
 			return;
 		}
-
+		if(x==y &)
 		System.out.println("NO");
 	}
 	public static void main(String[] args) {

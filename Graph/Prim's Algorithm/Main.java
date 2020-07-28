@@ -54,8 +54,9 @@ class MST {
 		} 
 
 		// Always include first 1st vertex in MST. 
-		key[0] = 0; // Make key 0 so that this vertex is 
+		// Make key 0 so that this vertex is 
 		// picked as first vertex 
+		key[0] = 0; 
 		parent[0] = -1; // First node is always root of MST 
 
 		// The MST will have V vertices 
@@ -97,13 +98,14 @@ class MST {
 			9		 */
 		MST t = new MST(); 
 		int graph[][] = new int[][] { { 0, 2, 0, 6, 0 }, 
-									{ 2, 0, 3, 8, 5 }, 
-									{ 0, 3, 0, 0, 7 }, 
-									{ 6, 8, 0, 0, 9 }, 
-									{ 0, 5, 7, 9, 0 } }; 
+									  { 2, 0, 3, 8, 5 }, 
+									  { 0, 3, 0, 0, 7 }, 
+									  { 6, 8, 0, 0, 9 }, 
+									  { 0, 5, 7, 9, 0 } 
+									}; 
 
 		// Print the solution 
 		t.primMST(graph); 
 	} 
 } 
-// This code is contributed by Aakash Hasija 
+
