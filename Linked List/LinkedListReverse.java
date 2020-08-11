@@ -25,7 +25,7 @@ public class LinkedListReverse{
 	}
 	Node getMiddle(Node head){
 		Node fast=head,slow=head;
-		while(fast.next!=null){
+		while(fast.next!=null && fast.next.next!=null){
 			slow=slow.next;
 			fast=fast.next.next;
 		}
